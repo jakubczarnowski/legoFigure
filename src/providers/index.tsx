@@ -1,18 +1,19 @@
 import React from "react";
-import AppRouter from "../routes";
-import ChakraProviderComponent from "./ChakraProvider";
-import RouterProvider from "./RouterProvider";
+import { AppRouter } from "../routes";
+import { ChakraProviderComponent } from "./ChakraProvider";
+import { QueryProvider } from "./QueryProvider/QueryProvider";
+import { RouterProvider } from "./RouterProvider";
 
 type Props = {};
 
-const Providers = (props: Props) => {
+export const Providers = (props: Props) => {
 	return (
 		<ChakraProviderComponent>
 			<RouterProvider>
-				<AppRouter />
+				<QueryProvider>
+					<AppRouter />
+				</QueryProvider>
 			</RouterProvider>
 		</ChakraProviderComponent>
 	);
 };
-
-export default Providers;

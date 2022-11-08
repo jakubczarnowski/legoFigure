@@ -1,11 +1,10 @@
 import React from "react";
-import Layout from "../../layout";
-import { Text, Flex, Button, Heading } from "@chakra-ui/react";
+import { Flex, Button, Heading } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
-import Routes from "../../shared/routes";
+import { Routes } from "../../shared/";
 type Props = {};
 
-const Home = (props: Props) => {
+export const HomePage = (props: Props) => {
 	const navigate = useNavigate();
 	return (
 		<Flex flexDir={"column"} alignItems={"center"} gap={"3rem"}>
@@ -18,5 +17,3 @@ const Home = (props: Props) => {
 		</Flex>
 	);
 };
-
-export default Home;

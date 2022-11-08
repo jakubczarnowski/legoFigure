@@ -1,6 +1,5 @@
-const Routes = {
+export const Routes = {
 	home: "/",
-	choose: "/choose",
+	choose: "/choosefigure",
 	checkout: "/checkout",
 } as const;
-export default Routes;

@@ -6,13 +6,13 @@ type Props = {
 	children: React.ReactNode;
 };
 
-const Layout = ({ children }: Props) => {
+export const Layout = ({ children }: Props) => {
 	return (
-		<Box display={"flex"} overflow={"hidden"} position={"relative"} alignItems={"center"} justifyContent={"center"} h={"100vh"}>
+		<Box display={"flex"} position={"relative"} alignItems={"center"} justifyContent={"center"} h={"100vh"}>
 			<Image
 				src={QuestionMark}
 				alt="question-mark"
-				position={"absolute"}
+				position={"fixed"}
 				top={"20%"}
 				left={"20%"}
 				zIndex={0}
@@ -22,7 +22,7 @@ const Layout = ({ children }: Props) => {
 			<Image
 				src={QuestionMark}
 				alt="question-mark"
-				position={"absolute"}
+				position={"fixed"}
 				bottom={"0%"}
 				right={"0%"}
 				height={"30%"}
@@ -30,9 +30,9 @@ const Layout = ({ children }: Props) => {
 				sx={{ transform: "rotate(30deg)" }}
 			/>
 
-			<Box zIndex={1}>{children}</Box>
+			<Box maxW={"container.xl"} zIndex={1}>
+				{children}
+			</Box>
 		</Box>
 	);
 };
-
-export default Layout;

@@ -1,24 +1,22 @@
 import React from "react";
 import { Route, Routes } from "react-router";
-import Layout from "../layout";
-import Checkout from "../pages/checkout";
-import Choose from "../pages/choose";
-import Error from "../pages/error";
-import Home from "../pages/home";
-import AppRoutes from "../shared/routes";
+import { Layout } from "../layout";
+import { CheckoutPage } from "../pages/checkout";
+import { ChoosePage } from "../pages/chooseFigure";
+import { Error } from "../pages/error";
+import { HomePage } from "../pages/home";
+import { Routes as AppRoutes } from "../shared/";
 type Props = {};
 
-const AppRouter = (props: Props) => {
+export const AppRouter = (props: Props) => {
 	return (
 		<Layout>
 			<Routes>
-				<Route path={AppRoutes.home} element={<Home />} />
-				<Route path={AppRoutes.choose} element={<Choose />} />
-				<Route path={AppRoutes.checkout} element={<Checkout />} />
+				<Route path={AppRoutes.home} element={<HomePage />} />
+				<Route path={AppRoutes.choose} element={<ChoosePage />} />
+				<Route path={AppRoutes.checkout} element={<CheckoutPage />} />
 				<Route path="*" element={<Error />} />
 			</Routes>
 		</Layout>
 	);
 };
-
-export default AppRouter;
