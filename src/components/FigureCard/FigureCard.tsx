@@ -3,14 +3,15 @@ import React from "react";
 import { Figure } from "../../shared/types";
 
 type Props = {
-	set_img_url: string;
+	imgUrl: string;
 	name: string;
-	set_url: string;
-	selected?: boolean;
+	isSelected?: boolean;
+	figureId: string;
 	onClick: () => void;
+	openModal: () => void;
 };
 
-export const FigureCard = ({ set_img_url, name, set_url, selected, onClick }: Props) => {
+export const FigureCard = ({ imgUrl, name, isSelected, onClick, openModal }: Props) => {
 	return (
 		<Flex
 			display={"flex"}
@@ -21,15 +22,23 @@ export const FigureCard = ({ set_img_url, name, set_url, selected, onClick }: Pr
 			p={5}
 			bg={"white"}
 			borderRadius={"3xl"}
-			shadow={selected ? "0px 0px 47px -8px rgba(255, 105, 0, 1);" : "0px 0px 30px 0px rgba(0, 0, 0, 1);"}
+			shadow={isSelected ? "0px 0px 47px -8px rgba(255, 105, 0, 1);" : "0px 0px 30px 0px rgba(0, 0, 0, 1);"}
 			transition={"ease-out 0.2s"}
 			onClick={onClick}
 		>
-			<Image src={set_img_url} objectFit={"contain"} width={"200px"} height={"200px"} fallbackSrc={"/ImagePlaceholder.png"} mb={5} />
+			<Image src={imgUrl} objectFit={"contain"} width={"200px"} height={"200px"} fallbackSrc={"/assets/ImagePlaceholder.png"} mb={5} />
 			<Text textAlign={"center"} fontSize={"md"} color={"black"} fontWeight={"700"} mb={5} overflowWrap={"anywhere"}>
 				{name}
 			</Text>
-			<Button variant={"outline"} color={"#FF6900"} fontWeight={"bold"}>
+			<Button
+				variant={"outline"}
+				color={"#FF6900"}
+				fontWeight={"bold"}
+				onClick={(e) => {
+					e.stopPropagation();
+					openModal();
+				}}
+			>
 				Show Details
 			</Button>
 		</Flex>

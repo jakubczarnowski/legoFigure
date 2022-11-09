@@ -18,9 +18,22 @@ export interface ShippingData {
 	surname: string;
 	phoneNumber: string;
 	email: string;
-	dateOfBirth: Date;
+	dateOfBirth: string;
 	address: string;
 	city: string;
 	state: string;
 	zipCode: string;
+}
+export interface Part {
+	part_num: string;
+	name: string;
+	part_cat_id: number;
+	part_url: string;
+	part_img_url: string;
+}
+
+export interface PartsResponse {
+	id: number;
+	inv_part_id: number;
+	part: Part;
 }
