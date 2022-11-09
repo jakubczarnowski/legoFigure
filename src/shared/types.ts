@@ -13,3 +13,14 @@ export interface ApiResponse<T> {
 	previous?: any;
 	results: T[];
 }
+export interface ShippingData {
+	name: string;
+	surname: string;
+	phoneNumber: string;
+	email: string;
+	dateOfBirth: Date;
+	address: string;
+	city: string;
+	state: string;
+	zipCode: string;
+}

@@ -4,6 +4,7 @@ import sampleSize from "lodash.samplesize";
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { FigureCard } from "../../components/FigureCard/FigureCard";
+import { Routes } from "../../shared";
 import { ApiResponse, Figure } from "../../shared/types";
 import { axiosInstance } from "../../utils/axiosInstance";
 type Props = {};
@@ -32,7 +33,16 @@ export const ChoosePage = (props: Props) => {
 					/>
 				))}
 			</Flex>
-			<Button color={"white"} bgColor={"blue.600"} rounded={"full"} variant="solid" disabled={!selectedFigureId} p={7}>
+			<Button
+				color={"white"}
+				bgColor={"blue.600"}
+				rounded={"full"}
+				variant="solid"
+				disabled={!selectedFigureId}
+				p={7}
+				// To small of an app to use global state manager, that's enough for now
+				onClick={() => navigate(Routes.checkout, { state: { figureId: selectedFigureId } })}
+			>
 				PROCEED TO SHIPMENT
 			</Button>
 		</Flex>

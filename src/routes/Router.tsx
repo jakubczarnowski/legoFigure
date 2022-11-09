@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { Layout } from "../layout";
 import { CheckoutPage } from "../pages/checkout";
 import { ChoosePage } from "../pages/chooseFigure";
@@ -15,7 +15,8 @@ export const AppRouter = (props: Props) => {
 				<Route path={AppRoutes.home} element={<HomePage />} />
 				<Route path={AppRoutes.choose} element={<ChoosePage />} />
 				<Route path={AppRoutes.checkout} element={<CheckoutPage />} />
-				<Route path="*" element={<Error />} />
+				<Route path={AppRoutes.error} element={<Error />} />
+				<Route path={"*"} element={<Navigate replace to={AppRoutes.error} />} />
 			</Routes>
 		</Layout>
 	);
