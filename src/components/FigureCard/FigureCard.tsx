@@ -32,7 +32,7 @@ export const FigureCard = ({ imgUrl, name, isSelected, onClick, openModal }: Pro
 			</Text>
 			<Button
 				variant={"outline"}
-				color={"#FF6900"}
+				color={"orange"}
 				fontWeight={"bold"}
 				onClick={(e) => {
 					e.stopPropagation();

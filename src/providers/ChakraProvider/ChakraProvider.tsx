@@ -11,6 +11,7 @@ export const ChakraProviderComponent = ({ children }: Props) => {
 	const theme = extendTheme({
 		colors: {
 			bg: "#1F2137",
+			orange: "#FF6900",
 		},
 		fonts: {
 			heading: `'Oswald', sans-serif`,

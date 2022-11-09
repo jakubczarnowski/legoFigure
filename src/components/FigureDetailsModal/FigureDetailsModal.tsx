@@ -43,7 +43,7 @@ export const FigureDetailsModal = ({ isOpen, onClose, name, numParts, imgUrl, se
 
 				<ModalFooter justifyContent={"space-between"}>
 					<Link href={setUrl} target={"_blank"} textDecoration="none" _hover={{}}>
-						<Button colorScheme="purple" mr={3}>
+						<Button colorScheme="orange" mr={3}>
 							Visit Rebrickable page
 						</Button>
 					</Link>

@@ -12,7 +12,7 @@ export const SinglePart = ({ name, partId, imgUrl }: Props) => (
 			<Text fontSize={"md"} fontWeight={"bold"} noOfLines={1}>
 				{name}
 			</Text>
-			<Text color={"orange.500"} fontSize={"md"} fontWeight={"bold"}>
+			<Text color={"orange"} fontSize={"md"} fontWeight={"bold"}>
 				{partId}
 			</Text>
 		</Flex>
