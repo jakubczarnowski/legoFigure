@@ -1,21 +1,18 @@
 import { Flex, Spinner } from "@chakra-ui/react";
-import React, { useEffect, useMemo } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import { ShippingForm } from "../../components/ShippingForm";
 import { SummaryCard } from "../../components/Summary";
 import { Routes } from "../../shared";
-import { useRandomFigures } from "../chooseFigure";
 import { FormProvider, useForm } from "react-hook-form";
-import { ApiResponse, Figure, ShippingData } from "../../shared/types";
+import { ShippingData } from "../../shared/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { format } from "date-fns";
-import sampleSize from "lodash.samplesize";
-import { axiosInstance } from "../../utils/axiosInstance";
 import { useAtom } from "jotai";
 import { selectedFigureIdAtom } from "../../shared/atoms";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { mockSubmitShippingData } from "../../utils/restApi";
+import { useShippingMutation } from "../../api/queries/useShippingMutation";
+import { useFigureQuery } from "../../api/queries/useFigureQuery";
+import { useRandomFiguresQuery } from "../../api/queries/useRandomFiguresQuery";
 
 type Props = {};
 
@@ -50,10 +47,10 @@ export const CheckoutPage = (props: Props) => {
 	});
 	const shippingMutation = useShippingMutation();
 	const [figureId, setFigureId] = useAtom(selectedFigureIdAtom);
-	const { refetch } = useRandomFigures();
+	const { refetch } = useRandomFiguresQuery();
 	if (figureId === null) return <Navigate to={Routes.error} />;
 	// fetching again just to be closer to real world scenario
-	const { data: figure, isLoading } = useFigure(figureId);
+	const { data: figure, isLoading } = useFigureQuery(figureId);
 	if (isLoading) return <Spinner />;
 	if (!figure) return <Navigate to={Routes.error} />;
 
@@ -77,22 +74,3 @@ export const CheckoutPage = (props: Props) => {
 		</FormProvider>
 	);
 };
-const getFigure = async (figureId: string) => {
-	const { data } = await axiosInstance.get<Figure>(`lego/minifigs/${figureId}`);
-	return data;
-};
-
-export function useFigure(figureId: string) {
-	return useQuery<Figure>({
-		queryKey: ["figure", figureId],
-		queryFn: () => getFigure(figureId),
-	});
-}
-const postFigure = async (values: ShippingData) => {
-	const result = await mockSubmitShippingData(values);
-	return result;
-};
-
-export function useShippingMutation() {
-	return useMutation((values: ShippingData) => postFigure(values));
-}

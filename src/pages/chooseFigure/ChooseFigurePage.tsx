@@ -4,6 +4,7 @@ import { useAtom } from "jotai";
 import sampleSize from "lodash.samplesize";
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router";
+import { useRandomFiguresQuery } from "../../api/queries/useRandomFiguresQuery";
 import { FigureCard } from "../../components/FigureCard/FigureCard";
 import { FigureDetailsModal } from "../../components/FigureDetailsModal";
 import { Routes } from "../../shared";
@@ -12,10 +13,10 @@ import { ApiResponse, Figure } from "../../shared/types";
 import { axiosInstance } from "../../utils/axiosInstance";
 type Props = {};
 
-export const ChoosePage = (props: Props) => {
+export const ChooseFigurePage = (props: Props) => {
 	const navigate = useNavigate();
 	const [modalFigure, setModalFigure] = useState<Figure | null>(null);
-	const { status, data, error, isLoading } = useRandomFigures();
+	const { status, data, error, isLoading } = useRandomFiguresQuery();
 	const [selectedFigureId, setSelectedFigureId] = useAtom(selectedFigureIdAtom);
 	if (isLoading) return <Spinner />;
 	const openModal = (figure: Figure) => {
@@ -67,22 +68,3 @@ export const ChoosePage = (props: Props) => {
 		</>
 	);
 };
-
-const getFigures = async () => {
-	const { data } = await axiosInstance.get<ApiResponse<Figure>>("lego/minifigs?in_theme_id=246&page_size=10000");
-	// some figures have no images, so we filter them out, we also could use a placeholder image depending on the client's wishes...
-	return { ...data, results: data.results.filter((figure: Figure) => figure.set_img_url) };
-};
-
-export function useRandomFigures() {
-	// Stale time and cache time are set to infinite to avoid unnecessary data requests
-	return useQuery<Figure[]>({
-		queryKey: ["figures"],
-		staleTime: Infinity,
-		cacheTime: Infinity,
-		queryFn: async () => {
-			const figures = await getFigures();
-			return sampleSize(figures.results, 3);
-		},
-	});
-}
