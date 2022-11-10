@@ -1,5 +1,4 @@
 import { ChakraProvider, theme } from "@chakra-ui/react";
-import { EnvironmentProvider } from "@chakra-ui/react-env";
 import { QueryClientConfig, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, RenderOptions } from "@testing-library/react";
 import { Provider } from "jotai";
