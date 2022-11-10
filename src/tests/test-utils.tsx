@@ -1,8 +1,10 @@
 import { ChakraProvider, theme } from "@chakra-ui/react";
 import { QueryClientConfig, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, RenderOptions } from "@testing-library/react";
+import { Provider } from "jotai";
 import { ReactNode, ReactElement } from "react";
 import { MemoryRouter } from "react-router";
+import { selectedFigureIdAtom } from "shared";
 
 const TestQueryProvider = ({ children, config }: { children: ReactNode; config?: QueryClientConfig }) => {
 	const queryClient = new QueryClient({
@@ -19,7 +21,9 @@ const TestQueryProvider = ({ children, config }: { children: ReactNode; config?:
 const TestProviders = ({ children }: { children: ReactNode }) => (
 	<TestQueryProvider>
 		<ChakraProvider theme={theme}>
-			<MemoryRouter>{children}</MemoryRouter>
+			<Provider initialValues={[[selectedFigureIdAtom, "fig-008941"]]}>
+				<MemoryRouter>{children}</MemoryRouter>
+			</Provider>
 		</ChakraProvider>
 	</TestQueryProvider>
 );
