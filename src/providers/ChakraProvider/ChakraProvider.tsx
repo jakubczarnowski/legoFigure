@@ -7,6 +7,10 @@ type Props = {
 	children: React.ReactNode;
 };
 export const theme = extendTheme({
+	config: {
+		initialColorMode: "dark",
+		useSystemColorMode: false,
+	},
 	colors: {
 		bg: "#1F2137",
 		orange: "#FF6900",

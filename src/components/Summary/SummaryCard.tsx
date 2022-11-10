@@ -21,7 +21,7 @@ export const SummaryCard = ({ name, imgUrl, setId, isSubmitting }: Props) => {
 	} = useFormContext();
 	if (isLoading) return <Spinner />;
 	return (
-		<Stack bg={"white"} color={"bg"} rounded={"2xl"} p={"2rem"} maxWidth={"400px"} gap={"2rem"}>
+		<Stack bg={"white"} color={"bg"} rounded={"2xl"} p={"2rem"} maxWidth={"400px"} gap={"1.5rem"}>
 			<Heading>SUMMARY</Heading>
 			<Flex alignItems={"center"} justifyContent={"center"} direction={"column"}>
 				<Image src={imgUrl} objectFit={"contain"} width={"150px"} height={"150px"} fallbackSrc={"/assets/ImagePlaceholder.png"} mb={5} />

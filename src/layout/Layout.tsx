@@ -7,7 +7,7 @@ type Props = {
 
 export const Layout = ({ children }: Props) => {
 	return (
-		<Container h={"100vh"} maxW={"container.xl"}>
+		<Container minH={"100vh"} maxW={"container.xl"} display={"flex"} alignItems={"center"} justifyContent={"center"}>
 			<Image
 				src={"./assets/QuestionMark.svg"}
 				alt="question-mark"
@@ -28,9 +28,7 @@ export const Layout = ({ children }: Props) => {
 				zIndex={-10}
 				sx={{ transform: "rotate(30deg)" }}
 			/>
-			<Box h={"100%"} display={"flex"} alignItems={"center"} justifyContent={"center"}>
-				{children}
-			</Box>
+			<Box zIndex={1}>{children}</Box>
 		</Container>
 	);
 };
