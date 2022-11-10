@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import sampleSize from "lodash.samplesize";
 import { ApiResponse, Figure } from "../../shared/types";
 import { axiosInstance } from "../../utils/axiosInstance";

@@ -1,10 +1,8 @@
-import { Button, Flex, Heading, Image, Spinner, Stack, Text } from "@chakra-ui/react";
-import { useQuery } from "@tanstack/react-query";
-import React, { useMemo } from "react";
+import { Button, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { usePartsQuery } from "api/queries/usePartsQuery";
 import { useFormContext } from "react-hook-form";
-import { ApiResponse, Figure, PartsResponse } from "../../shared/types";
-import { axiosInstance } from "../../utils/axiosInstance";
 import { SinglePart } from "../SinglePart";
+import { SummarySkeleton } from "./SummarySkeleton";
 
 type Props = {
 	name: string;
@@ -12,14 +10,13 @@ type Props = {
 	setId: string;
 	isSubmitting: boolean;
 };
-
 export const SummaryCard = ({ name, imgUrl, setId, isSubmitting }: Props) => {
-	const { data, isLoading, error } = useParts(setId);
+	const { data, isLoading, error } = usePartsQuery(setId);
 	const parts = data?.results;
 	const {
 		formState: { isValid },
 	} = useFormContext();
-	if (isLoading) return <Spinner />;
+	if (isLoading) return <SummarySkeleton />;
 	return (
 		<Stack bg={"white"} color={"bg"} rounded={"2xl"} p={"2rem"} maxWidth={"400px"} gap={"1.5rem"}>
 			<Heading>SUMMARY</Heading>
@@ -44,15 +41,3 @@ export const SummaryCard = ({ name, imgUrl, setId, isSubmitting }: Props) => {
 		</Stack>
 	);
 };
-
-export const getParts = async (setId: string) => {
-	const { data } = await axiosInstance.get<ApiResponse<PartsResponse>>(`lego/minifigs/${setId}/parts/`);
-	return data;
-};
-
-export function useParts(setId: string) {
-	return useQuery<ApiResponse<PartsResponse>>({
-		queryKey: ["parts"],
-		queryFn: () => getParts(setId),
-	});
-}

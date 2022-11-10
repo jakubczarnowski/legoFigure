@@ -17,7 +17,7 @@ export const ShippingForm = (props: Props) => {
 			<Flex direction={"row"} gap={5}>
 				<FormControl isInvalid={!!errors?.name} mb={5}>
 					<FormLabel htmlFor="name">First name</FormLabel>
-					<Input variant={"filled"} id="name" placeholder="Your Name" {...register("name")} />
+					<Input aria-label={"Name Input"} variant={"filled"} id="name" placeholder="Your Name" {...register("name")} />
 					<FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
 				</FormControl>
 				<FormControl isInvalid={!!errors?.surname} mb={5}>
