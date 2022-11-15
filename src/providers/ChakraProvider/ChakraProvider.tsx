@@ -4,29 +4,29 @@ import "@fontsource/roboto";
 import "@fontsource/oswald";
 
 type Props = {
-	children: React.ReactNode;
+    children: React.ReactNode;
 };
 export const theme = extendTheme({
-	config: {
-		initialColorMode: "dark",
-		useSystemColorMode: false,
-	},
-	colors: {
-		bg: "#1F2137",
-		orange: "#FF6900",
-	},
-	fonts: {
-		heading: `'Oswald', sans-serif`,
-		body: `'Roboto', sans-serif`,
-	},
-	styles: {
-		global: () => ({
-			body: {
-				bg: "#1F2137",
-			},
-		}),
-	},
+    config: {
+        initialColorMode: "dark",
+        useSystemColorMode: false,
+    },
+    colors: {
+        bg: "#1F2137",
+        orange: "#FF6900",
+    },
+    fonts: {
+        heading: `'Oswald', sans-serif`,
+        body: `'Roboto', sans-serif`,
+    },
+    styles: {
+        global: () => ({
+            body: {
+                bg: "#1F2137",
+            },
+        }),
+    },
 });
 export const ChakraProviderComponent = ({ children }: Props) => {
-	return <ChakraProvider theme={theme}>{children}</ChakraProvider>;
+    return <ChakraProvider theme={theme}>{children}</ChakraProvider>;
 };

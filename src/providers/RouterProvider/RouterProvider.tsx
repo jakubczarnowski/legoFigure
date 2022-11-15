@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 type Props = {
-	children: React.ReactNode;
+    children: React.ReactNode;
 };
 
 export const RouterProvider = ({ children }: Props) => {
-	return <BrowserRouter>{children}</BrowserRouter>;
+    return <BrowserRouter>{children}</BrowserRouter>;
 };
