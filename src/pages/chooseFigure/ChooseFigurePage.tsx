@@ -1,21 +1,18 @@
-import { Box, Button, Flex, Heading, Spinner, useDisclosure } from "@chakra-ui/react";
-import { useQuery } from "@tanstack/react-query";
+import { Button, Flex, Heading, Spinner } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import sampleSize from "lodash.samplesize";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useRandomFiguresQuery } from "../../api/queries/useRandomFiguresQuery";
 import { FigureCard } from "../../components/FigureCard/FigureCard";
 import { FigureDetailsModal } from "../../components/FigureDetailsModal";
 import { Routes } from "../../shared";
 import { selectedFigureIdAtom } from "../../shared/atoms";
-import { ApiResponse, Figure } from "../../shared/types";
-import { axiosInstance } from "../../utils/axiosInstance";
+import { Figure } from "../../shared/types";
 
 export const ChooseFigurePage = () => {
     const navigate = useNavigate();
     const [modalFigure, setModalFigure] = useState<Figure | null>(null);
-    const { status, data, error, isLoading } = useRandomFiguresQuery();
+    const { data, isLoading } = useRandomFiguresQuery();
     const [selectedFigureId, setSelectedFigureId] = useAtom(selectedFigureIdAtom);
     if (isLoading) return <Spinner />;
     const openModal = (figure: Figure) => {

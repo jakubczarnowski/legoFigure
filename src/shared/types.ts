@@ -10,7 +10,7 @@ export interface Figure {
 export interface ApiResponse<T> {
     count: number;
     next: string;
-    previous?: any;
+    previous?: unknown;
     results: T[];
 }
 export interface ShippingData {

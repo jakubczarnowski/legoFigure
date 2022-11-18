@@ -11,7 +11,7 @@ type Props = {
     isSubmitting: boolean;
 };
 export const SummaryCard = ({ name, imgUrl, setId, isSubmitting }: Props) => {
-    const { data, isLoading, error } = usePartsQuery(setId);
+    const { data, isLoading } = usePartsQuery(setId);
     const parts = data?.results;
     const {
         formState: { isValid },

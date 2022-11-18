@@ -1,9 +1,9 @@
 import { ShippingData } from "../shared/types";
 
-export const mockSubmitShippingData = (data: ShippingData): Promise<Boolean> => {
-    return new Promise((resolve, reject) => {
+export const mockSubmitShippingData = (data: ShippingData): Promise<ShippingData> => {
+    return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(true);
+            resolve(data);
         }, 500);
     });
 };

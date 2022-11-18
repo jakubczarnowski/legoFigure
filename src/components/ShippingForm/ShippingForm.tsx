@@ -1,6 +1,4 @@
 import {
-    Box,
-    Button,
     Flex,
     FormControl,
     FormErrorMessage,
@@ -11,13 +9,13 @@ import {
     InputLeftAddon,
 } from "@chakra-ui/react";
 import React from "react";
-import { FieldErrors, useFormContext, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { ShippingData } from "../../shared/types";
 
 export const ShippingForm = () => {
     const {
         register,
-        formState: { errors, isSubmitting },
+        formState: { errors },
     } = useFormContext<ShippingData>();
     return (
         <Flex direction={"column"}>

@@ -1,7 +1,5 @@
-import { useEnvironment, usePointerEvent } from "@chakra-ui/react";
 import { CheckoutPage } from "pages/Checkout";
-import { fireEvent, mockMatchMedia, render, screen, waitFor, waitForElementToBeRemoved } from "tests/test-utils";
-import { vi } from "vitest";
+import { mockMatchMedia, render, screen, waitFor, waitForElementToBeRemoved } from "tests/test-utils";
 import userEvent from "@testing-library/user-event";
 
 describe("Shipping form", () => {

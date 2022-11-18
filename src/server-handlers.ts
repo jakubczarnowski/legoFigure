@@ -18,7 +18,6 @@ export const handlers = [
         res(ctx.json(partsResponse))
     ),
     rest.post("/api/shippingData", (req, res, ctx) => {
-        console.log(req);
         return res(ctx.json(req.text()));
     }),
 ];

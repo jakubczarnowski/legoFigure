@@ -1,6 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
 // import { render, screen } from "@testing-library/react";
-import { ChakraProvider, theme } from "@chakra-ui/react";
 import { FigureCard } from "./FigureCard";
 import { render, screen } from "tests/test-utils";
 

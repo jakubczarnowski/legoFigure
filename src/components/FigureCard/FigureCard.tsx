@@ -1,6 +1,5 @@
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Button, Flex, Image, Text } from "@chakra-ui/react";
 import React from "react";
-import { Figure } from "../../shared/types";
 
 type Props = {
     imgUrl: string;
