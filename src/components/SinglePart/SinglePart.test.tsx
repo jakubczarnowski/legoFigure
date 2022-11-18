@@ -5,8 +5,8 @@ import { SinglePart } from "./SinglePart";
 
 const singlePartMock = {
     name: "Harry Potter Figure",
-    partId: "123ffa",
-    imgUrl: "https://cdn.rebrickable.com/media/sets/fig-012684/108439.jpg",
+    partNum: "123ffa",
+    partImgUrl: "https://cdn.rebrickable.com/media/sets/fig-012684/108439.jpg",
 };
 
 describe("SinglePart", () => {

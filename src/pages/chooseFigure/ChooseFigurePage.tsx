@@ -28,12 +28,10 @@ export const ChooseFigurePage = () => {
                 <Flex gap={"30px"} minH={"400px"} flexWrap={"wrap"} mb={10}>
                     {data?.map((figure) => (
                         <FigureCard
-                            key={figure.set_num}
-                            figureId={figure.set_num}
-                            imgUrl={figure.set_img_url}
-                            name={figure.name}
-                            isSelected={selectedFigureId === figure.set_num}
-                            onClick={() => setSelectedFigureId(figure.set_num)}
+                            key={figure.setNum}
+                            {...figure}
+                            isSelected={selectedFigureId === figure.setNum}
+                            onClick={() => setSelectedFigureId(figure.setNum)}
                             openModal={() => openModal(figure)}
                         />
                     ))}
@@ -50,17 +48,7 @@ export const ChooseFigurePage = () => {
                     PROCEED TO SHIPMENT
                 </Button>
             </Flex>
-            {modalFigure && (
-                <FigureDetailsModal
-                    imgUrl={modalFigure.set_img_url}
-                    name={modalFigure.name}
-                    numParts={modalFigure.num_parts}
-                    setUrl={modalFigure.set_url}
-                    figureId={modalFigure.set_num}
-                    isOpen={!!modalFigure}
-                    onClose={closeModal}
-                />
-            )}
+            {modalFigure && <FigureDetailsModal {...modalFigure} isOpen={!!modalFigure} onClose={closeModal} />}
         </>
     );
 };

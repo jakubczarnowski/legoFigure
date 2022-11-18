@@ -2,13 +2,13 @@ import { Flex, Image, Text } from "@chakra-ui/react";
 
 type Props = {
     name: string;
-    partId: string;
-    imgUrl: string;
+    partNum: string;
+    partImgUrl: string;
 };
-export const SinglePart = ({ name, partId, imgUrl }: Props) => (
+export const SinglePart = ({ name, partNum, partImgUrl }: Props) => (
     <Flex alignItems={"center"} justifyContent={"flex-start"} direction={"row"} gap={2}>
         <Image
-            src={imgUrl}
+            src={partImgUrl}
             objectFit={"contain"}
             width={"60px"}
             height={"60px"}
@@ -20,7 +20,7 @@ export const SinglePart = ({ name, partId, imgUrl }: Props) => (
                 {name}
             </Text>
             <Text color={"orange"} fontSize={"md"} fontWeight={"bold"}>
-                {partId}
+                {partNum}
             </Text>
         </Flex>
     </Flex>

@@ -2,15 +2,14 @@ import { Button, Flex, Image, Text } from "@chakra-ui/react";
 import React from "react";
 
 type Props = {
-    imgUrl: string;
     name: string;
+    setImgUrl: string;
     isSelected?: boolean;
-    figureId: string;
     onClick: () => void;
     openModal: () => void;
 };
 
-export const FigureCard = ({ imgUrl, name, isSelected, onClick, openModal }: Props) => {
+export const FigureCard = ({ setImgUrl, name, isSelected, onClick, openModal }: Props) => {
     return (
         <Flex
             display={"flex"}
@@ -26,7 +25,7 @@ export const FigureCard = ({ imgUrl, name, isSelected, onClick, openModal }: Pro
             onClick={onClick}
         >
             <Image
-                src={imgUrl}
+                src={setImgUrl}
                 objectFit={"contain"}
                 width={"200px"}
                 height={"200px"}

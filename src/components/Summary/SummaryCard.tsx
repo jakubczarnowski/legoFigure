@@ -6,13 +6,12 @@ import { SummarySkeleton } from "./SummarySkeleton";
 
 type Props = {
     name: string;
-    imgUrl: string;
-    setId: string;
+    setImgUrl: string;
+    setNum: string;
     isSubmitting: boolean;
 };
-export const SummaryCard = ({ name, imgUrl, setId, isSubmitting }: Props) => {
-    const { data, isLoading } = usePartsQuery(setId);
-    const parts = data?.results;
+export const SummaryCard = ({ name, setImgUrl, setNum, isSubmitting }: Props) => {
+    const { data: parts, isLoading } = usePartsQuery(setNum);
     const {
         formState: { isValid },
     } = useFormContext();
@@ -22,7 +21,7 @@ export const SummaryCard = ({ name, imgUrl, setId, isSubmitting }: Props) => {
             <Heading>SUMMARY</Heading>
             <Flex alignItems={"center"} justifyContent={"center"} direction={"column"}>
                 <Image
-                    src={imgUrl}
+                    src={setImgUrl}
                     objectFit={"contain"}
                     width={"150px"}
                     height={"150px"}
@@ -34,18 +33,10 @@ export const SummaryCard = ({ name, imgUrl, setId, isSubmitting }: Props) => {
                 </Text>
             </Flex>
             <Text fontSize={"md"} fontWeight={"semibold"}>
-                There are {data?.count} parts in this minifig
+                There are {parts?.length} parts in this minifig
             </Text>
             <Flex direction={"column"} gap={5} mb={"30px"}>
-                {parts &&
-                    parts.map((part) => (
-                        <SinglePart
-                            key={part.part.part_num}
-                            name={part.part.name}
-                            partId={part.part.part_num.toString()}
-                            imgUrl={part.part.part_img_url}
-                        />
-                    ))}
+                {parts && parts.map((part) => <SinglePart key={part.partNum} {...part} />)}
             </Flex>
             <Button
                 variant={"filled"}

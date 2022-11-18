@@ -16,24 +16,24 @@ import {
 type Props = {
     isOpen: boolean;
     onClose: () => void;
-    figureId: string;
-    name: string;
-    numParts: number;
-    imgUrl: string;
+    setNum: string;
     setUrl: string;
+    name: string;
+    setImgUrl: string;
+    numParts: number;
 };
 
-export const FigureDetailsModal = ({ isOpen, onClose, name, numParts, imgUrl, setUrl, figureId }: Props) => {
+export const FigureDetailsModal = ({ isOpen, onClose, name, numParts, setImgUrl, setUrl, setNum }: Props) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent p={3}>
-                <ModalHeader>Set number - ({figureId})</ModalHeader>
+                <ModalHeader>Set number - ({setNum})</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     <Flex alignItems={"center"} justifyContent={"center"} direction={"column"}>
                         <Image
-                            src={imgUrl}
+                            src={setImgUrl}
                             objectFit={"contain"}
                             width={"150px"}
                             height={"150px"}

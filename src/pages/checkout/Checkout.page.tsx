@@ -66,12 +66,7 @@ export const CheckoutPage = () => {
             <form onSubmit={methods.handleSubmit(onSubmit)}>
                 <Flex justifyContent={"center"} alignItems={"center"} gap={20} wrap={"wrap"} m={5}>
                     <ShippingForm />
-                    <SummaryCard
-                        setId={figure.set_num}
-                        imgUrl={figure.set_img_url}
-                        name={figure.name}
-                        isSubmitting={shippingMutation.isLoading}
-                    />
+                    <SummaryCard {...figure} isSubmitting={shippingMutation.isLoading} />
                 </Flex>
             </form>
         </FormProvider>
