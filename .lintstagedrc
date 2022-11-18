@@ -1,6 +1,6 @@
 {
-    "{.ts,tsx}": [
-        "prettier --write",
+    "*{.ts,tsx}": [
+        "npx prettier --write",
         "eslint --fix --max-warnings 0"
     ]
 }
