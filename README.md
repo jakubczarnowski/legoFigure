@@ -14,7 +14,7 @@
 # That's a Showcase Project. Take a look at the code while you're here!
 ## Visit the site live [here](https://lego-figures.czarnowskijakub.tech/)
 
-#To start the app:
+# To start the app:
 
 ### Clone it locally into your repository
 ### Install the dependencies (npm i)
