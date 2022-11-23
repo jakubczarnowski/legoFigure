@@ -16,6 +16,6 @@
 
 #To start the app:
 
-###Clone it locally into your repository
-###Install the dependencies (npm i)
-###Run the code locally! (npm run dev)
+### Clone it locally into your repository
+### Install the dependencies (npm i)
+### Run the code locally! (npm run dev)
