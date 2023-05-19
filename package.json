@@ -9,10 +9,11 @@
         "preview": "vite preview",
         "test": "vitest",
         "test:commit": "vitest run --silent",
-        "eslint-fix": "eslint --fix --ext .tsx,.ts src/ ",
+        "lint:fix": "eslint --fix --ext .tsx,.ts src/ ",
+        "prettier-format": "npx prettier --write \"**/*.{ts,tsx}\"",
         "lint": "eslint --ext .ts,.tsx src/",
         "prepare": "husky install .husky",
-        "prettier-format": "npx prettier --write \"**/*.{ts,tsx}\""
+        "check-types": "tsc --noEmit"
     },
     "dependencies": {
         "@chakra-ui/react": "2.3.4",
@@ -26,7 +27,6 @@
         "camelcase-keys": "^8.0.2",
         "date-fns": "^2.29.3",
         "framer-motion": "^7.6.5",
-        "husky": "^8.0.2",
         "jotai": "^1.9.1",
         "lint-staged": "^13.0.3",
         "lodash.samplesize": "^4.2.0",
@@ -45,6 +45,7 @@
         "@testing-library/user-event": "^14.4.3",
         "@types/date-fns": "^2.6.0",
         "@types/jest": "^29.2.2",
+        "husky": "^8.0.2",
         "@types/lodash.samplesize": "^4.2.7",
         "@types/react": "^18.0.24",
         "@types/react-dom": "^18.0.8",
